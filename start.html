@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+</head>
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+
+
+    var taco = 'Soft Chicken Taco';
+
+    // Regular
+
+
+    // Interpolated
+    // With Taco being the variable, these two are the same:
+    console.log('Hello I am a %s', taco);
+    console.log(`Hello I am a ${taco}`);
+
+
+    // Styled
+// console.log('%c I am great text', 'font-size:50px; background: red')
+
+    // warning!
+
+    console.warn('Oh No! You entered a string instead of an integer!!!')
+
+    // Error :|
+
+    console.error('Shit! I messed up. ');
+
+    // Info
+console.info('Crocodiles eat 3-4 people per year');
+
+    // Testing
+    // You can put any boolean here. 
+    console.assert(1===1, 'That is wrong!');
+
+    const p = document.querySelector('p');
+    console.assert(p.classList.contains('exampleClass'), 'Does not contain the required class!r');
+
+    // clearing
+
+    console.clear();
+
+    // Viewing DOM Elements
+    // To get all dom nodes. 
+    console.log(p);
+    console.dir(p);
+
+    // Grouping together
+    // Good for looking at many items
+    dogs.forEach(dog => {
+      console.group(`${dog.name}`);
+      console.log(`This is  ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age*7} dog years old`);
+      console.groupEnd(`${dog.name}`);
+
+    })
+
+    // counting
+    // How many times ANY item, element, class appears. 
+    console.count(p);
+
+    // timing
+    // How long does something take. 
+    console.time('fetching data');
+    fetch('https://api.github.com/users/llogan974')
+    .then(data => data.json())
+    .then( data => {
+      console.timeEnd('fetching data');
+      console.log(data);
+    })
+
+  </script>
+</body>
+</html>
